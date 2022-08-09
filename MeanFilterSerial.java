@@ -12,10 +12,10 @@ public class MeanFilterSerial{
       BufferedImage img = null;
       File file = null;
       //frame for the filters
-      int frameSize=3;
+      int frameSize=9;
       //try/catch in case of errors
       try{
-        file= new File("Sample.jpg");
+        file= new File("hills.jpeg");
         img = ImageIO.read(file);
       }catch(IOException e){
         System.out.println("ERROR:"+e);
@@ -23,41 +23,70 @@ public class MeanFilterSerial{
       //storing the height and width of the current image
       int height=img.getHeight();
       int width=img.getWidth();
-      for (int y = frameSize; y < height; y++) {
-        for (int x = frameSize; x < width; x++) {
 
-          //Arrays for storing all values in the frame
-          int redArray []=new int[frameSize*2];
-          int greenArray []=new int[frameSize*2];
-          int blueArray []=new int[frameSize*2];
+      //Arrays for storing all values in the grid
+      int [][] aGrid= new int[width][height];
+      int [][] rGrid= new int[width][height];
+      int [][] gGrid= new int[width][height];
+      int [][] bGrid= new int[width][height];
 
+      //Initial forloop for saving all the ARGB values
+      for (int y = 0; y < height; y++) {
+        for (int x = 0; x < width; x++) {
           //Pulling in data about the current pixel
           int pixel = img.getRGB(x,y);
-
           //Creating a colour from the current pixel
           Color color = new Color(pixel, true);
 
-          //Getting RGB from current pixel 
-          int r = color.getRed();
-          int g = color.getGreen();
-          int b = color.getBlue();
-
-          //Code to change the pixels that are to be written
-          g = 150;
-          b = 150;
-
-          //Creating a new colour from the updated RGB values
-          color = new Color(r, g, b);
-
-          //updating the image with the new pixel colour
-          img.setRGB(x, y, color.getRGB());
-
+          aGrid[x][y]=color.getAlpha();
+          rGrid[x][y]=color.getRed();
+          gGrid[x][y]=color.getGreen();
+          bGrid[x][y]=color.getBlue();
         }
       }
+      //System.out.println("DONE WITH SAVING PIC VALUES");
+      //Second for loop for updating the pixels
+      for (int y = (frameSize-1)/2; y < height-(frameSize-1)/2; y++) {
+        for (int x = (frameSize-1)/2; x < width-(frameSize-1)/2; x++) {
+          //creating a base new colour
+          //Color newColor = new Color(255,255,255,255);
+          //creating arrays of the rgb values in the frame
+          int totalR=0;
+          int totalG=0;
+          int totalB=0;
+          int countTest=0;
+          for (int yFrame = 0; yFrame < frameSize; yFrame++) {
+            for (int xFrame = 0; xFrame < frameSize; xFrame++) {
+              totalR=totalR+rGrid[(x+xFrame)-(frameSize-1)/2][(y+yFrame)-(frameSize-1)/2];
+              totalG=totalG+gGrid[(x+xFrame)-(frameSize-1)/2][(y+yFrame)-(frameSize-1)/2];
+              totalB=totalB+bGrid[(x+xFrame)-(frameSize-1)/2][(y+yFrame)-(frameSize-1)/2];
+              countTest++;
+            }
+          }
+
+          
+          int avgR=totalR/(frameSize*frameSize);
+          int avgG=totalG/(frameSize*frameSize);
+          int avgB=totalB/(frameSize*frameSize);
+
+          //System.out.println("red:"+avgR+"  green:"+avgG+"  blue:"+avgB+"  RUNS:"+countTest);
+          //Code to change the pixels that are to be written
+          //Mean the arrays
+          
+          //Creating a new colour from the updated RGB values
+          Color newColor = new Color(avgR, avgG, avgB);
+
+          //updating the image with the new pixel colour
+          img.setRGB(x, y, newColor.getRGB());
+        }
+      }
+
+        
+    
       //Save the image, use try/catch for errors
       try{
-        file = new File("/Users/owen/OneDrive - University of Cape Town/My UCT/2nd Year/CSC2002S/Week 2/Assignment 1/Output.jpg");
-        ImageIO.write(img, "jpg", file);
+        file = new File("/Users/owen/OneDrive - University of Cape Town/My UCT/2nd Year/CSC2002S/Week 2/Assignment 1/Output.jpeg");
+        ImageIO.write(img, "jpeg", file);
         System.out.println("Finished.");
       }catch(IOException e){
       System.out.println("ERROR:"+e);
