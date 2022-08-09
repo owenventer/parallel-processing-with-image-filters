@@ -11,6 +11,8 @@ public class MeanFilterSerial{
       //Reading in the image
       BufferedImage img = null;
       File file = null;
+      //frame for the filters
+      int frameSize=3;
       //try/catch in case of errors
       try{
         file= new File("Sample.jpg");
@@ -21,31 +23,36 @@ public class MeanFilterSerial{
       //storing the height and width of the current image
       int height=img.getHeight();
       int width=img.getWidth();
-      for (int y = 0; y < height; y++) {
-         for (int x = 0; x < width; x++) {
+      for (int y = frameSize; y < height; y++) {
+        for (int x = frameSize; x < width; x++) {
 
-            //Pulling in data about the current pixel
-            int pixel = img.getRGB(x,y);
+          //Arrays for storing all values in the frame
+          int redArray []=new int[frameSize*2];
+          int greenArray []=new int[frameSize*2];
+          int blueArray []=new int[frameSize*2];
 
-            //Creating a colour from the current pixel
-            Color color = new Color(pixel, true);
+          //Pulling in data about the current pixel
+          int pixel = img.getRGB(x,y);
 
-            //Getting RGB from current pixel 
-            int r = color.getRed();
-            int g = color.getGreen();
-            int b = color.getBlue();
+          //Creating a colour from the current pixel
+          Color color = new Color(pixel, true);
 
-            //Code to change the pixels that are to be written
-            g = 150;
-            b = 150;
+          //Getting RGB from current pixel 
+          int r = color.getRed();
+          int g = color.getGreen();
+          int b = color.getBlue();
 
-            //Creating a new colour from the updated RGB values
-            color = new Color(r, g, b);
+          //Code to change the pixels that are to be written
+          g = 150;
+          b = 150;
 
-            //updating the image with the new pixel colour
-            img.setRGB(x, y, color.getRGB());
+          //Creating a new colour from the updated RGB values
+          color = new Color(r, g, b);
 
-         }
+          //updating the image with the new pixel colour
+          img.setRGB(x, y, color.getRGB());
+
+        }
       }
       //Save the image, use try/catch for errors
       try{
