@@ -8,7 +8,7 @@ import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 
 public class MeanFilterParallel extends RecursiveAction {
-  protected static int threshold = 10000;
+  protected static int threshold = 1000;
   private int arrSize;
   private int startY;
   private int startX;
@@ -36,7 +36,7 @@ public class MeanFilterParallel extends RecursiveAction {
   }
     @Override
     protected void compute() {
-      if(1==1){
+      if(arrSize<threshold){
         //DO IT
         for (int y = startY; y < endY; y++) {
           for (int x = startX; x < endX; x++) {
@@ -75,6 +75,13 @@ public class MeanFilterParallel extends RecursiveAction {
 
       }else{
         //split the work, invoke smaller tasks and wait for result
+        //splitting work into two 
+        int split=arrSize/2;
+        MeanFilterParallel left=new MeanFilterParallel(split,startY, startX, endY-(endY/2), endX-(endX/2));
+        MeanFilterParallel right= new MeanFilterParallel(arrSize-split, endY-(endY/2)+1, endX+(endX/2)+1, endY, endX);
+        left.fork();
+        right.compute();
+
         
 
       }
@@ -82,22 +89,21 @@ public class MeanFilterParallel extends RecursiveAction {
     public static void main(String args[])throws IOException{
       //Normal Main method
       //Reading in the image
-      BufferedImage img = null;
       File file = null;
       //frame size we are working with
       frameSize=3;
       //try/catch in case of errors
       try{
         file= new File("hills.jpeg");
-        img = ImageIO.read(file);
+        finalImg = ImageIO.read(file);
       }catch(IOException e){
         System.out.println("ERROR:"+e);
       }
       
 
       //storing the height and width of the current image
-      int height=img.getHeight();
-      int width=img.getWidth();
+      int height=finalImg.getHeight();
+      int width=finalImg.getWidth();
     
 
       //Arrays for storing all values in the grid
@@ -112,7 +118,7 @@ public class MeanFilterParallel extends RecursiveAction {
         for (int x = 0; x < width; x++) 
         {
           //Pulling in data about the current pixel
-          int pixel = img.getRGB(x,y);
+          int pixel = finalImg.getRGB(x,y);
           //Creating a colour from the current pixel
           Color color = new Color(pixel, true);
 
@@ -124,9 +130,15 @@ public class MeanFilterParallel extends RecursiveAction {
       System.out.println("DONE WITH SAVING PIC VALUES");
 
       //start it up , divide and conquer
+      System.out.println(rGrid.length);
       MeanFilterParallel mfp= new MeanFilterParallel(rGrid.length, (frameSize-1)/2, (frameSize-1)/2, height-(frameSize-1)/2,width-(frameSize-1)/2);
-      ForkJoinPool pool=new ForkJoinPool();
-      pool.invoke(mfp);
+      ForkJoinPool pool=new ForkJoinPool(); 
+      long startTime = System.currentTimeMillis();
+        pool.invoke(mfp);
+        long endTime = System.currentTimeMillis();
+ 
+        System.out.println("Image blur took " + (endTime - startTime) + 
+                " milliseconds.");
 
 
 
@@ -138,7 +150,7 @@ public class MeanFilterParallel extends RecursiveAction {
         System.out.println("Finished.");
       }catch(IOException e){
       System.out.println("ERROR:"+e);
-
+      }
     }//main() ends here
 
 }
