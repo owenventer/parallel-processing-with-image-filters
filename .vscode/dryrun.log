@@ -1,0 +1,9 @@
+make: Entering directory `/Users/owen/OneDrive - University of Cape Town/My UCT/2nd Year/CSC2002S/Week 2/Assignment 1'
+ 
+make: *** No rule to make target `out/production/Assignment1/MeanFilterParallel.class', needed by `default'.
+make: *** No rule to make target `out/production/Assignment1/MeanFilterSerial.class', needed by `default'.
+make: *** No rule to make target `out/production/Assignment1/MedianFilterParallel.class', needed by `default'.
+make: *** No rule to make target `out/production/Assignment1/MedianFilterSerial.class', needed by `default'.
+
+make: Leaving directory `/Users/owen/OneDrive - University of Cape Town/My UCT/2nd Year/CSC2002S/Week 2/Assignment 1'
+ 
