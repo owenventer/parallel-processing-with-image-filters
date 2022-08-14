@@ -5,9 +5,10 @@ JAVAC = /usr/bin/javac
 .SUFFIXES: .java .class
 SRCDIR = src
 BINDIR = bin
-IMG=bridge.jpg
-MedTHLD=250
-MenTHLD=500
+SCRIPTDIR=Scripts
+IMG=cat.jpg
+WNDW=11
+
 
 $(BINDIR)/%.class:$(SRCDIR)/%.java
 	$(JAVAC) -d $(BINDIR)/ -cp $(BINDIR) $<
@@ -39,15 +40,31 @@ run: $(CLASS_FILES)
 	java -cp $(BINDIR) MedianFilterSerial cat.jpg OutputMedianSCat.jpg 9
 	java -cp $(BINDIR) MedianFilterParallel cat.jpg OutputMedianPCat.jpg 9
 
-parallels: $(CLASS_FILES)
-	java -cp $(BINDIR) MeanFilterParallel $(IMG) OutputMeanP_person.jpg 9 $(MenTHLD)
-	java -cp $(BINDIR) MeanFilterParallel $(IMG) OutputMeanP_person.jpg 9 $(MenTHLD)
-	java -cp $(BINDIR) MeanFilterParallel $(IMG) OutputMeanP_person.jpg 9 $(MenTHLD)
-	java -cp $(BINDIR) MeanFilterParallel $(IMG) OutputMeanP_person.jpg 9 $(MenTHLD)
-	java -cp $(BINDIR) MeanFilterParallel $(IMG) OutputMeanP_person.jpg 9 $(MenTHLD)
+test: $(CLASS_FILES)
+	java -cp $(BINDIR) MeanFilterSerial $(IMG) OutputMeanS_person.jpg $(WNDW) 
+	java -cp $(BINDIR) MeanFilterSerial $(IMG) OutputMeanS_person.jpg $(WNDW) 
+	java -cp $(BINDIR) MeanFilterSerial $(IMG) OutputMeanS_person.jpg $(WNDW) 
+	java -cp $(BINDIR) MeanFilterSerial $(IMG) OutputMeanS_person.jpg $(WNDW) 
+	java -cp $(BINDIR) MeanFilterSerial $(IMG) OutputMeanS_person.jpg $(WNDW) 
 
-	java -cp $(BINDIR) MedianFilterParallel $(IMG) OutputMedianP_person.jpg 9 $(MedTHLD)
-	java -cp $(BINDIR) MedianFilterParallel $(IMG) OutputMedianP_person.jpg 9 $(MedTHLD)
-	java -cp $(BINDIR) MedianFilterParallel $(IMG) OutputMedianP_person.jpg 9 $(MedTHLD)
-	java -cp $(BINDIR) MedianFilterParallel $(IMG) OutputMedianP_person.jpg 9 $(MedTHLD)
-	java -cp $(BINDIR) MedianFilterParallel $(IMG) OutputMedianP_person.jpg 9 $(MedTHLD)
+	java -cp $(BINDIR) MeanFilterParallel $(IMG) OutputMeanP_person.jpg $(WNDW) 
+	java -cp $(BINDIR) MeanFilterParallel $(IMG) OutputMeanP_person.jpg $(WNDW) 
+	java -cp $(BINDIR) MeanFilterParallel $(IMG) OutputMeanP_person.jpg $(WNDW) 
+	java -cp $(BINDIR) MeanFilterParallel $(IMG) OutputMeanP_person.jpg $(WNDW) 
+	java -cp $(BINDIR) MeanFilterParallel $(IMG) OutputMeanP_person.jpg $(WNDW) 
+
+	
+
+	java -cp $(BINDIR) MedianFilterSerial $(IMG) OutputMedianS_person.jpg $(WNDW) 
+	java -cp $(BINDIR) MedianFilterSerial $(IMG) OutputMedianS_person.jpg $(WNDW) 
+	java -cp $(BINDIR) MedianFilterSerial $(IMG) OutputMedianS_person.jpg $(WNDW) 
+	java -cp $(BINDIR) MedianFilterSerial $(IMG) OutputMedianS_person.jpg $(WNDW) 
+	java -cp $(BINDIR) MedianFilterSerial $(IMG) OutputMedianS_person.jpg $(WNDW) 
+
+	java -cp $(BINDIR) MedianFilterParallel $(IMG) OutputMedianP_person.jpg $(WNDW) 
+	java -cp $(BINDIR) MedianFilterParallel $(IMG) OutputMedianP_person.jpg $(WNDW) 
+	java -cp $(BINDIR) MedianFilterParallel $(IMG) OutputMedianP_person.jpg $(WNDW) 
+	java -cp $(BINDIR) MedianFilterParallel $(IMG) OutputMedianP_person.jpg $(WNDW) 
+	java -cp $(BINDIR) MedianFilterParallel $(IMG) OutputMedianP_person.jpg $(WNDW) 
+
+

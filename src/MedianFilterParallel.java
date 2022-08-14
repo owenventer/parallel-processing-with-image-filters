@@ -113,7 +113,6 @@ public class MedianFilterParallel extends RecursiveAction {
       String fileNameIn=args[0];
       String fileNameOut=args[1];
       int frameSizeIn=Integer.parseInt(args[2]);
-      threshold=Integer.parseInt(args[3]);
       //frame size we are working with
       frameSize=frameSizeIn;
       //try/catch in case of errors
@@ -161,8 +160,8 @@ public class MedianFilterParallel extends RecursiveAction {
         pool.invoke(mfp);
         long endTime = System.currentTimeMillis();
  
-        System.out.println("Image blur took (Median Filter Parallel)(Threshold:"+threshold+"): " + (endTime - startTime) + 
-        " milliseconds.");
+        System.out.println("Image blur took (Median Filter Parallel): " + (endTime - startTime) + 
+                " milliseconds.");
 
 
 

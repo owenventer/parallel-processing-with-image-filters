@@ -8,7 +8,7 @@ import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 
 public class MeanFilterParallel extends RecursiveAction {
-  protected static int threshold = 250;
+  protected static int threshold = 500;
   private int arrSize;
   private int startY;
   private int startX;
@@ -103,7 +103,7 @@ public class MeanFilterParallel extends RecursiveAction {
       String fileNameIn=args[0];
       String fileNameOut=args[1];
       int frameSizeIn=Integer.parseInt(args[2]);
-      threshold=Integer.parseInt(args[3]);
+      
       //frame size we are working with
       frameSize=frameSizeIn;
       //try/catch in case of errors
@@ -153,7 +153,7 @@ public class MeanFilterParallel extends RecursiveAction {
       pool.invoke(mfp);
       long endTime = System.currentTimeMillis();
 
-      System.out.println("Image blur took (Mean Filter Parallel)(Threshold:"+threshold+"): " + (endTime - startTime) + 
+      System.out.println("Image blur took (Mean Filter Parallel): " + (endTime - startTime) + 
               " milliseconds.");
 
 
