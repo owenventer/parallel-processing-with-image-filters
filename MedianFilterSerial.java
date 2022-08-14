@@ -107,7 +107,7 @@ public class MedianFilterSerial {
       
         //Save the image, use try/catch for errors
         try{
-          file = new File("/Users/owen/OneDrive - University of Cape Town/My UCT/2nd Year/CSC2002S/Week 2/Assignment 1/Output.jpeg");
+          file = new File("/Users/owen/OneDrive - University of Cape Town/My UCT/2nd Year/CSC2002S/Week 2/Assignment 1/OutputMedS.jpg");
           ImageIO.write(img, "jpg", file);
           System.out.println("Finished.");
         }catch(IOException e){

@@ -110,7 +110,7 @@ public class MedianFilterParallel extends RecursiveAction {
       //Reading in the image
       File file = null;
       //frame size we are working with
-      frameSize=3;
+      frameSize=9;
       //try/catch in case of errors
       try{
         file= new File("Sample.jpg");
@@ -164,7 +164,7 @@ public class MedianFilterParallel extends RecursiveAction {
 
       //AFTER JOIN SAVE IT
       try{
-        file = new File("/Users/owen/OneDrive - University of Cape Town/My UCT/2nd Year/CSC2002S/Week 2/Assignment 1/OutputMed.jpg");
+        file = new File("/Users/owen/OneDrive - University of Cape Town/My UCT/2nd Year/CSC2002S/Week 2/Assignment 1/OutputMedP.jpg");
         ImageIO.write(finalImg, "jpg", file);
         System.out.println("Finished.");
       }catch(IOException e){

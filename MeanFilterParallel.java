@@ -91,10 +91,10 @@ public class MeanFilterParallel extends RecursiveAction {
       //Reading in the image
       File file = null;
       //frame size we are working with
-      frameSize=3;
+      frameSize=9;
       //try/catch in case of errors
       try{
-        file= new File("hills.jpeg");
+        file= new File("Sample.jpg");
         finalImg = ImageIO.read(file);
       }catch(IOException e){
         System.out.println("ERROR:"+e);
@@ -145,8 +145,8 @@ public class MeanFilterParallel extends RecursiveAction {
 
       //AFTER JOIN SAVE IT
       try{
-        file = new File("/Users/owen/OneDrive - University of Cape Town/My UCT/2nd Year/CSC2002S/Week 2/Assignment 1/Output.jpeg");
-        ImageIO.write(finalImg, "jpeg", file);
+        file = new File("/Users/owen/OneDrive - University of Cape Town/My UCT/2nd Year/CSC2002S/Week 2/Assignment 1/OutputMeanP.jpg");
+        ImageIO.write(finalImg, "jpg", file);
         System.out.println("Finished.");
       }catch(IOException e){
       System.out.println("ERROR:"+e);

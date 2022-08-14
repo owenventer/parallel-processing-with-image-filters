@@ -15,7 +15,7 @@ public class MeanFilterSerial{
       int frameSize=9;
       //try/catch in case of errors
       try{
-        file= new File("hills.jpeg");
+        file= new File("Sample.jpg");
         img = ImageIO.read(file);
       }catch(IOException e){
         System.out.println("ERROR:"+e);
@@ -25,12 +25,12 @@ public class MeanFilterSerial{
       int width=img.getWidth();
 
       //Arrays for storing all values in the grid
-      int [][] aGrid= new int[width][height];
+      
       int [][] rGrid= new int[width][height];
       int [][] gGrid= new int[width][height];
       int [][] bGrid= new int[width][height];
 
-      //Initial forloop for saving all the ARGB values
+      //Initial forloop for saving all the RGB values
       for (int y = 0; y < height; y++) {
         for (int x = 0; x < width; x++) {
           //Pulling in data about the current pixel
@@ -38,13 +38,12 @@ public class MeanFilterSerial{
           //Creating a colour from the current pixel
           Color color = new Color(pixel, true);
 
-          aGrid[x][y]=color.getAlpha();
           rGrid[x][y]=color.getRed();
           gGrid[x][y]=color.getGreen();
           bGrid[x][y]=color.getBlue();
         }
       }
-      //System.out.println("DONE WITH SAVING PIC VALUES");
+      System.out.println("DONE WITH SAVING PIC VALUES");
       //Second for loop for updating the pixels
       for (int y = (frameSize-1)/2; y < height-(frameSize-1)/2; y++) {
         for (int x = (frameSize-1)/2; x < width-(frameSize-1)/2; x++) {
@@ -85,8 +84,8 @@ public class MeanFilterSerial{
     
       //Save the image, use try/catch for errors
       try{
-        file = new File("/Users/owen/OneDrive - University of Cape Town/My UCT/2nd Year/CSC2002S/Week 2/Assignment 1/Output.jpeg");
-        ImageIO.write(img, "jpeg", file);
+        file = new File("/Users/owen/OneDrive - University of Cape Town/My UCT/2nd Year/CSC2002S/Week 2/Assignment 1/OutputMeanS.jpg");
+        ImageIO.write(img, "jpg", file);
         System.out.println("Finished.");
       }catch(IOException e){
       System.out.println("ERROR:"+e);
