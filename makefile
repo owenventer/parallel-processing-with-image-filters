@@ -6,7 +6,7 @@ JAVAC = /usr/bin/javac
 SRCDIR = src
 BINDIR = bin
 SCRIPTDIR=Scripts
-IMG=cat.jpg
+IMG=castle.jpg
 WNDW=11
 
 
@@ -32,13 +32,13 @@ MedianFilterSerial: $(CLASS_FILES)
 	java -cp $(BINDIR) MedianFilterSerial Sample.jpg OutputMedianS.jpg 3
 
 MedianFilterParallel: $(CLASS_FILES)
-	java -cp $(BINDIR) MedianFilterParallel Sample.jpg OutputMedianP.jpg 3
+	java -cp $(BINDIR) MedianFilterParallel baloon.jpg OutputMedianP.jpg 9
 
 run: $(CLASS_FILES)
-	java -cp $(BINDIR) MeanFilterSerial cat.jpg OutputMeanSCat.jpg 9
-	java -cp $(BINDIR) MeanFilterParallel cat.jpg OutputMeanPCat.jpg 9
-	java -cp $(BINDIR) MedianFilterSerial cat.jpg OutputMedianSCat.jpg 9
-	java -cp $(BINDIR) MedianFilterParallel cat.jpg OutputMedianPCat.jpg 9
+	java -cp $(BINDIR) MeanFilterSerial $(IMG) OutputMeanSCastle.jpg 9
+	java -cp $(BINDIR) MeanFilterParallel $(IMG) OutputMeanPCastle.jpg 9
+	java -cp $(BINDIR) MedianFilterSerial $(IMG) OutputMedianSCastle.jpg 9
+	java -cp $(BINDIR) MedianFilterParallel $(IMG) OutputMedianPCastle.jpg 9
 
 test: $(CLASS_FILES)
 	java -cp $(BINDIR) MeanFilterSerial $(IMG) OutputMeanS_person.jpg $(WNDW) 
