@@ -1,0 +1,69 @@
+commit c3d29c45fc162c1deaba19277fe7c1cf1e8882f9 (HEAD -> master)
+Author: Owen <VNTNIC019@myuct.ac.za>
+Date:   Mon Aug 15 21:56:40 2022 +0200
+
+    Final code, all working
+
+commit 1ee2a8c22ef438d05af90c58327b933e20de6d84
+Author: Owen <VNTNIC019@myuct.ac.za>
+Date:   Sun Aug 14 23:36:22 2022 +0200
+
+    Done with this
+
+commit 8b61cdf8e56e149e18b5888d9edadb98761ecf99
+Author: Owen <VNTNIC019@myuct.ac.za>
+Date:   Sun Aug 14 19:43:50 2022 +0200
+
+    Actual working code with makefile
+
+commit b55430d01f0c38fee3b0b2142d79392337df3ae8
+Author: Owen <VNTNIC019@myuct.ac.za>
+Date:   Sun Aug 14 09:05:32 2022 +0200
+
+    All Code Working
+
+commit 691a7558008db6f2845eb094f6fd27d00598e15d
+Author: Owen <VNTNIC019@myuct.ac.za>
+Date:   Sun Aug 14 08:51:22 2022 +0200
+
+    Added MedianFilterParallel
+
+commit b8b908777f6b174be7637100069c4bd4c5d787d1
+Author: Owen <VNTNIC019@myuct.ac.za>
+Date:   Sat Aug 13 18:31:55 2022 +0200
+
+    Working mean Parallel
+
+commit c884cb6de02060b366132ce90e0c47b6172915ed
+Author: Owen <VNTNIC019@myuct.ac.za>
+Date:   Sat Aug 13 14:42:32 2022 +0200
+
+    updated meanParallel hopefully working in serial with threads
+
+commit ee62d292cdd02020ed8b301e47045402d28e1c80
+Author: Owen <VNTNIC019@myuct.ac.za>
+Date:   Sat Aug 13 12:09:56 2022 +0200
+
+    updated meanParallel
+
+commit 0ec1b87919a1b3620e6ee62e7c3f82086e3038f9
+Author: Owen <VNTNIC019@myuct.ac.za>
+Date:   Tue Aug 9 21:15:50 2022 +0200
+
+    Working Serial code for both Mean and Median Filters
+
+commit c903205218089cd65a8c8be9989aca39eef83b56
+Author: Owen <VNTNIC019@myuct.ac.za>
+Date:   Tue Aug 9 10:10:55 2022 +0200
+
+    Tentative code, potential rework incoming
+
+commit f9859c7b501ff507f32c03c88f8e879b52354e3a
+Author: Owen <VNTNIC019@myuct.ac.za>
+Date:   Sun Aug 7 21:06:56 2022 +0200
+
+    Skeleton code for reading and writing to an image
+
+commit ffd2501e8247351b8f2398d5679bddeeadcc4143
+Author: Owen <VNTNIC019@myuct.ac.za>
+Date:   Sun Aug 7 18:34:01 2022 +0200
